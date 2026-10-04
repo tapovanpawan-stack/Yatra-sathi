@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tapovan Traveller - Yatra Sathi</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f6f1e9;color:#222}
+header{background:#17110d;color:#fff;text-align:center;padding:18px}header h1{margin:0;font-size:27px}header p{margin:6px 0}
+nav{display:flex;gap:6px;overflow-x:auto;overflow-y:hidden;background:#fff;padding:8px;position:sticky;top:0;z-index:10}
+nav button,.btn{border:0;border-radius:10px;padding:11px 14px;background:#33261d;color:#fff;font-size:15px}
+nav button{background:#f0e6da;color:#222;white-space:nowrap}
+.wrap{max-width:900px;margin:auto;padding:14px}.hero,.card{background:#fff;border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 2px 10px #0001}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card h2{margin:0 0 8px;font-size:19px}.muted{color:#666}
+section{display:none}.active{display:block}
+input,textarea,select{width:100%;padding:12px;margin:6px 0 10px;border:1px solid #ccc;border-radius:9px;font-size:15px}
+label{font-weight:bold;font-size:14px}.green{background:#13833d}.orange{background:#d56a00}.blue{background:#175ea8}.red{background:#a52525}
+.item{border:1px solid #ddd;border-radius:12px;padding:12px;margin:10px 0}.item button{margin:5px 4px 0 0}
+.preview{max-width:100%;border-radius:12px;margin-top:10px}.notice{background:#fff5c9;padding:12px;border-radius:10px}
+@media(max-width:650px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><h1>🛕 Tapovan Traveller</h1><h2 style='margin:4px 0;font-size:21px'>यात्रा साथी • Yatra Sathi</h2><p>यात्रा • तीर्थ • होटल • Traveller • Live Darshan</p></header>
+<nav>
+<button onclick="show('home')">🏠 Home</button><button onclick="show('bus')">🚌 Traveller</button>
+<button onclick="show('hotel')">🏨 Hotel</button><button onclick="show('package')">🛕 Yatra</button>
+<button onclick="show('poster')">🖼️ Poster</button><button onclick="show('mandir')">🛕 Mandir Links</button><button onclick="show('horoscope')">🔮 Daily Horoscope</button><button onclick="show('live')">📹 Live</button>
+<button onclick="show('free')">➕ Free Listing</button>
+<button onclick="show('shop')">🏪 Shop</button>
+</nav>
+
+<div class="wrap">
+<section id="home" class="active">
+<div class="hero"><h2>आपकी यात्रा, एक ही जगह</h2><p class="muted">सभी पेज इसी एक फाइल में हैं — बार-बार डाउनलोड करने की जरूरत नहीं।</p><p>बस, होटल, यात्रा पैकेज, पोस्टर और Live Darshan</p></div>
+
+<div id="home-mandir-links" class="card">
+<h2>🛕 मंदिरों के लिंक</h2>
+<p class="muted">नीचे किसी मंदिर के <b>मंदिर लिंक</b> पर दबाएँ — Google Maps में स्थान खुलेगा।</p>
+<div class="grid">
+<div class="item"><b>श्री काशी विश्वनाथ — वाराणसी</b><br><button class="btn blue" onclick="openMap('Kashi Vishwanath Temple Varanasi')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>श्री राम जन्मभूमि — अयोध्या</b><br><button class="btn blue" onclick="openMap('Shri Ram Janmabhoomi Mandir Ayodhya')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>महाकालेश्वर — उज्जैन</b><br><button class="btn blue" onclick="openMap('Mahakaleshwar Jyotirlinga Ujjain')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>सोमनाथ मंदिर — गुजरात</b><br><button class="btn blue" onclick="openMap('Somnath Temple Gujarat')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>तिरुपति बालाजी</b><br><button class="btn blue" onclick="openMap('Tirumala Tirupati Temple Andhra Pradesh')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>श्रीशैलम मल्लिकार्जुन</b><br><button class="btn blue" onclick="openMap('Srisailam Mallikarjuna Temple')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>रामनाथस्वामी — रामेश्वरम</b><br><button class="btn blue" onclick="openMap('Ramanathaswamy Temple Rameswaram')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>पद्मनाभस्वामी — तिरुवनंतपुरम</b><br><button class="btn blue" onclick="openMap('Sree Padmanabhaswamy Temple Thiruvananthapuram')">📍 मंदिर लिंक</button></div>
+</div>
+</div>
+
+<div class="grid">
+<div class="card"><h2>🚌 Traveller / Bus Listing</h2><p>बस/Traveller की जानकारी मुफ्त में जोड़ें।</p><button class="btn blue" onclick="show('bus')">Listing खोलें</button></div>
+<div class="card"><h2>🏨 Hotel Listing</h2><p>मंदिर के पास होटल की जानकारी जोड़ें।</p><button class="btn blue" onclick="show('hotel')">Hotel Listing</button></div>
+<div class="card"><h2>🛕 Yatra Packages</h2><p>यात्रा और तीर्थ पैकेज देखें।</p><button class="btn orange" onclick="show('package')">पैकेज देखें</button></div>
+<div class="card"><h2>🖼️ Yatra Poster</h2><p>पोस्टर जोड़ें और देखें।</p><button class="btn orange" onclick="show('poster')">Poster खोलें</button></div>
+<div class="card"><h2>📹 Live Darshan</h2><p>मंदिर के Live Darshan लिंक खोलें।</p><button class="btn" onclick="show('live')">Live Darshan</button></div>
+<div class="card"><h2>➕ Free Listing</h2><p>बस, होटल या दुकानदार की मुफ्त Listing।</p><button class="btn green" onclick="show('free')">Free Listing</button></div>
+<div class="card"><h2>📞 Call Now</h2><p>Tapovan Traveller से सीधे संपर्क।</p><button class="btn orange" onclick="callTapovan()">Call Now</button></div>
+<div class="card"><h2>💬 WhatsApp</h2><p>सीधे WhatsApp पर संदेश भेजें।</p><button class="btn green" onclick="waTapovan()">WhatsApp</button></div>
+</div>
+<div class="notice">ℹ️ यह Working Demo है। Listing इसी फोन में सेव होती है। Online website बनाने के बाद यही सिस्टम server/database से जोड़ा जाएगा।</div>
+</section>
+
+<section id="bus">
+<div class="card"><h2>🚌 Free Bus / Traveller Listing</h2>
+<label>बस/Traveller का नाम</label><input id="bn" placeholder="ABC Travels">
+<label>मालिक का नाम</label><input id="bo" placeholder="नाम">
+<label>मोबाइल नंबर</label><input id="bp" inputmode="numeric" placeholder="10 अंकों का नंबर">
+<label>वाहन प्रकार</label><select id="bt"><option>AC Bus</option><option>Non-AC Bus</option><option>Tempo Traveller</option><option>Mini Bus</option></select>
+<label>सीटें</label><input id="bs" placeholder="40">
+<label>मुख्य रूट</label><input id="br" placeholder="Yamunanagar - Haridwar">
+<label>WhatsApp नंबर</label><input id="bw" inputmode="numeric" placeholder="WhatsApp नंबर">
+<button class="btn green" onclick="saveBus()">✅ Listing Submit</button> <button class="btn" onclick="show('home')">← Home</button>
+<div id="bm"></div></div><div class="card"><h2>📋 Bus Listings</h2><div id="bl"></div></div>
+</section>
+
+<section id="hotel">
+<div class="card"><h2>🏨 Free Hotel Listing</h2>
+<label>होटल का नाम</label><input id="hn"><label>स्थान</label><input id="hp" placeholder="मंदिर/शहर">
+<label>मोबाइल नंबर</label><input id="hph" inputmode="numeric"><label>किराया</label><input id="hr" placeholder="₹">
+<button class="btn green" onclick="saveHotel()">✅ Hotel Submit</button> <button class="btn" onclick="show('home')">← Home</button>
+<div id="hm"></div></div><div class="card"><h2>📋 Hotel Listings</h2><div id="hl"></div></div>
+</section>
+
+<section id="package">
+<div class="card"><h2>🛕 Yatra Package जोड़ें</h2><p class="muted">हर यात्रा पैकेज में Tapovan Traveller का Call Now और WhatsApp बटन रहेगा। जरूरत हो तो नंबर बदले जा सकते हैं।</p>
+<label>यात्रा का नाम</label><input id="pn" placeholder="जैसे Nepal Yatra">
+<label>स्थान/रूट</label><input id="pr" placeholder="Ayodhya - Kashi - Prayagraj">
+<label>किराया प्रति व्यक्ति</label><input id="pc" placeholder="₹">
+<label>यात्रा विवरण</label><textarea id="pd" rows="4" placeholder="दिन, मंदिर और सुविधाएँ"></textarea>
+<label>Call Now मोबाइल नंबर</label><input id="pph" inputmode="numeric" value="9991624086" placeholder="10 अंकों का मोबाइल नंबर">
+<label>WhatsApp नंबर</label><input id="pwa" inputmode="numeric" value="9306363805" placeholder="WhatsApp नंबर">
+<button class="btn green" onclick="savePackage()">✅ Package Save</button> <button class="btn" onclick="show('home')">← Home</button>
+<div id="pm"></div></div><div class="card"><h2>📋 Yatra Packages</h2><div id="pl"></div></div>
+</section>
+
+<section id="poster">
+<div class="card"><h2>🖼️ Yatra Poster</h2>
+<p class="muted">हर पोस्टर के साथ Tapovan Traveller का Call Now और WhatsApp बटन रहेगा।</p>
+<label>पोस्टर का नाम</label><input id="postern" placeholder="जैसे Chandigarh to Ayodhya Yatra">
+<label>अपने फोन से पोस्टर चुनें</label><input id="posterfile" type="file" accept="image/*">
+<label>Call Now मोबाइल नंबर</label><input id="posterph" inputmode="numeric" value="9991624086">
+<label>WhatsApp नंबर</label><input id="posterwa" inputmode="numeric" value="9306363805">
+<button class="btn green" onclick="savePoster()">✅ Poster Save</button>
+<button class="btn" onclick="show('home')">← Home</button>
+<div id="postermsg"></div>
+</div>
+<div class="card"><h2>📋 Yatra Posters</h2><div id="posters"></div></div>
+</section>
+
+<section id="live">
+<div class="card"><h2>📹 Live Darshan</h2>
+<p class="muted">किसी मंदिर का Live लिंक नीचे डालें।</p>
+<label>मंदिर का नाम</label><input id="ln" placeholder="जैसे Ujjain Mahakal">
+<label>Live URL</label><input id="lu" placeholder="https://youtube.com/...">
+<button class="btn green" onclick="saveLive()">✅ Live Link Save</button>
+<div id="ll"></div><br><button class="btn" onclick="show('home')">← Home</button>
+</div>
+</section>
+
+<section id="mandir">
+<div class="card">
+<h2>🛕 प्रमुख मंदिरों के लिंक</h2>
+<p class="muted">मंदिर के नाम पर क्लिक करके Google Maps में स्थान देख सकते हैं।</p>
+<div class="grid">
+<div class="item"><b>🛕 श्री काशी विश्वनाथ मंदिर — वाराणसी</b><br><button class="btn blue" onclick="openMap('Kashi Vishwanath Temple Varanasi')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>🛕 श्री राम जन्मभूमि मंदिर — अयोध्या</b><br><button class="btn blue" onclick="openMap('Shri Ram Janmabhoomi Mandir Ayodhya')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>🛕 महाकालेश्वर मंदिर — उज्जैन</b><br><button class="btn blue" onclick="openMap('Mahakaleshwar Jyotirlinga Ujjain')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>🛕 सोमनाथ मंदिर — गुजरात</b><br><button class="btn blue" onclick="openMap('Somnath Temple Gujarat')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>🛕 तिरुपति बालाजी — आंध्र प्रदेश</b><br><button class="btn blue" onclick="openMap('Tirumala Tirupati Temple Andhra Pradesh')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>🛕 श्रीशैलम मल्लिकार्जुन मंदिर</b><br><button class="btn blue" onclick="openMap('Srisailam Mallikarjuna Temple')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>🛕 रामनाथस्वामी मंदिर — रामेश्वरम</b><br><button class="btn blue" onclick="openMap('Ramanathaswamy Temple Rameswaram')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>🛕 मीनाक्षी अम्मन मंदिर — मदुरै</b><br><button class="btn blue" onclick="openMap('Meenakshi Amman Temple Madurai')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>🛕 पद्मनाभस्वामी मंदिर — तिरुवनंतपुरम</b><br><button class="btn blue" onclick="openMap('Sree Padmanabhaswamy Temple Thiruvananthapuram')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>🛕 गुरुवायूर मंदिर — केरल</b><br><button class="btn blue" onclick="openMap('Guruvayur Temple Kerala')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>🛕 द्वारकाधीश मंदिर — द्वारका</b><br><button class="btn blue" onclick="openMap('Dwarkadhish Temple Dwarka Gujarat')">📍 मंदिर लिंक</button></div>
+<div class="item"><b>🛕 पशुपतिनाथ मंदिर — काठमांडू</b><br><button class="btn blue" onclick="openMap('Pashupatinath Temple Kathmandu Nepal')">📍 मंदिर लिंक</button></div>
+</div>
+<button class="btn" onclick="show('home')">← Home</button>
+</div>
+</section>
+
+<section id="horoscope">
+<div class="card">
+<h2>🔮 आज का दैनिक राशिफल</h2>
+<p class="muted">अपनी राशि चुनें। राशिफल हर दिन तारीख के अनुसार बदल जाएगा।</p>
+<label>अपनी राशि चुनें</label>
+<select id="rashi">
+<option value="मेष">♈ मेष</option><option value="वृषभ">♉ वृषभ</option>
+<option value="मिथुन">♊ मिथुन</option><option value="कर्क">♋ कर्क</option>
+<option value="सिंह">♌ सिंह</option><option value="कन्या">♍ कन्या</option>
+<option value="तुला">♎ तुला</option><option value="वृश्चिक">♏ वृश्चिक</option>
+<option value="धनु">♐ धनु</option><option value="मकर">♑ मकर</option>
+<option value="कुंभ">♒ कुंभ</option><option value="मीन">♓ मीन</option>
+</select>
+<button class="btn green" onclick="showHoroscope()">🔮 आज का राशिफल देखें</button>
+<div id="horoscopeResult" style="margin-top:14px"></div>
+<button class="btn" onclick="show('home')">← Home</button>
+</div>
+</section>
+
+<section id="free">
+<div class="card"><h2>➕ Free Listing</h2>
+<p>जिसका काम है वह अपनी जानकारी मुफ्त में जोड़ सकता है।</p>
+<button class="btn blue" onclick="show('bus')">🚌 Bus / Traveller</button>
+<button class="btn blue" onclick="show('hotel')">🏨 Hotel</button>
+<button class="btn orange" onclick="show('shop')">🏪 दुकानदार</button>
+<button class="btn" onclick="show('home')">← Home</button>
+</div>
+<div class="card"><h2>🏪 दुकानदार / सेवा Listing</h2>
+<label>दुकान / सेवा का नाम</label><input id="sn" placeholder="जैसे पूजा सामग्री भंडार">
+<label>मालिक का नाम</label><input id="so" placeholder="नाम">
+<label>मोबाइल नंबर</label><input id="sp" inputmode="numeric" placeholder="10 अंकों का नंबर">
+<label>पता / स्थान</label><input id="sa" placeholder="शहर, मंदिर के पास">
+<label>काम / सामान</label><input id="sc" placeholder="पूजा सामग्री, प्रसाद, फूल आदि">
+<label>WhatsApp नंबर</label><input id="sw" inputmode="numeric" placeholder="WhatsApp नंबर">
+<button class="btn green" onclick="saveShop()">✅ दुकानदार Listing Submit</button>
+<div id="sm"></div>
+</div>
+<div class="card"><h2>📋 दुकानदार Listings</h2><div id="sl"></div></div>
+</section>
+
+<section id="shop">
+<div class="card"><h2>🏪 दुकानदार / सेवा Listing</h2>
+<p class="muted">यहाँ दुकान या यात्रा से जुड़ी सेवा की जानकारी मुफ्त में जोड़ी जा सकती है।</p>
+<label>दुकान / सेवा का नाम</label><input id="sn2" placeholder="जैसे पूजा सामग्री भंडार">
+<label>मालिक का नाम</label><input id="so2" placeholder="नाम">
+<label>मोबाइल नंबर</label><input id="sp2" inputmode="numeric" placeholder="10 अंकों का नंबर">
+<label>पता / स्थान</label><input id="sa2" placeholder="शहर, मंदिर के पास">
+<label>काम / सामान</label><input id="sc2" placeholder="पूजा सामग्री, प्रसाद, फूल आदि">
+<label>WhatsApp नंबर</label><input id="sw2" inputmode="numeric" placeholder="WhatsApp नंबर">
+<button class="btn green" onclick="saveShop2()">✅ दुकानदार Listing Submit</button>
+<button class="btn" onclick="show('home')">← Home</button>
+<div id="sm2"></div>
+</div>
+<div class="card"><h2>📋 दुकानदार Listings</h2><div id="sl2"></div></div>
+</section>
+</div>
+
+<script>
+const q=id=>document.getElementById(id);
+function show(id){document.querySelectorAll('section').forEach(x=>x.classList.remove('active'));q(id).classList.add('active');scrollTo(0,0);if(id==='bus')renderBus();if(id==='hotel')renderHotel();if(id==='package')renderPackage();if(id==='poster')renderPosters();if(id==='live')renderLive();if(id==='free')renderShops();if(id==='shop')renderShops();if(id==='horoscope')showHoroscope()}
+function arr(k){return JSON.parse(localStorage.getItem(k)||'[]')}function set(k,v){localStorage.setItem(k,JSON.stringify(v))}
+function saveBus(){let x={n:q('bn').value,o:q('bo').value,p:q('bp').value,t:q('bt').value,s:q('bs').value,r:q('br').value,w:q('bw').value};if(!x.n||!x.p){q('bm').innerHTML='⚠️ नाम और मोबाइल भरें';return}let a=arr('buses');a.push(x);set('buses',a);q('bm').innerHTML='✅ Listing सेव हो गई';['bn','bo','bp','bs','br','bw'].forEach(id=>q(id).value='');renderBus()}
+function renderBus(){let a=arr('buses');q('bl').innerHTML=a.length?a.map((x,i)=>`<div class=item><b>🚌 ${x.n}</b><br>मालिक: ${x.o||'-'}<br>${x.t} | ${x.s||'-'} सीट<br>रूट: ${x.r||'-'}<br>📞 ${x.p}<br><button class="btn green" onclick="location.href='tel:${x.p}'">Call</button><button class="btn green" onclick="location.href='https://wa.me/91${x.w||x.p}'">WhatsApp</button><button class="btn red" onclick="del('buses',${i},'bus')">Delete</button></div>`).join(''):'अभी कोई Bus Listing नहीं है।'}
+function saveHotel(){let x={n:q('hn').value,p:q('hp').value,ph:q('hph').value,r:q('hr').value};if(!x.n||!x.ph){q('hm').innerHTML='⚠️ होटल नाम और मोबाइल भरें';return}let a=arr('hotels');a.push(x);set('hotels',a);q('hm').innerHTML='✅ Hotel सेव हो गया';['hn','hp','hph','hr'].forEach(id=>q(id).value='');renderHotel()}
+function renderHotel(){let a=arr('hotels');q('hl').innerHTML=a.length?a.map((x,i)=>`<div class=item><b>🏨 ${x.n}</b><br>स्थान: ${x.p||'-'}<br>किराया: ${x.r||'-'}<br>📞 ${x.ph}<br><button class="btn green" onclick="location.href='tel:${x.ph}'">Call</button><button class="btn red" onclick="del('hotels',${i},'hotel')">Delete</button></div>`).join(''):'अभी कोई Hotel Listing नहीं है।'}
+function savePackage(){let x={n:q('pn').value,r:q('pr').value,c:q('pc').value,d:q('pd').value,ph:q('pph').value,wa:q('pwa').value};if(!x.n){q('pm').innerHTML='⚠️ यात्रा का नाम भरें';return}let a=arr('packages');a.push(x);set('packages',a);q('pm').innerHTML='✅ Package सेव हो गया';['pn','pr','pc','pd','pph','pwa'].forEach(id=>q(id).value='');renderPackage()}
+function renderPackage(){let a=arr('packages');q('pl').innerHTML=a.length?a.map((x,i)=>{let ph=x.ph||'9991624086',wa=x.wa||'9306363805';return `<div class=item><b>🛕 ${x.n}</b><br>रूट: ${x.r||'-'}<br>किराया: ${x.c||'-'}<br>${x.d||''}<br><button class="btn green" onclick="location.href='tel:${ph}'">📞 Call Now</button><button class="btn green" onclick="location.href='https://wa.me/91${wa}?text=Namaste%20Tapovan%20Traveller%20ji%2C%20mujhe%20${encodeURIComponent(x.n)}%20ke%20baare%20mein%20jaankari%20chahiye.'">💬 WhatsApp</button><button class="btn red" onclick="del('packages',${i},'package')">Delete</button></div>`}).join(''):'अभी कोई Package नहीं है।'}
+function del(k,i,type){let a=arr(k);a.splice(i,1);set(k,a);type==='bus'?renderBus():type==='hotel'?renderHotel():type==='package'?renderPackage():renderShops()}
+function savePoster(){
+let f=q('posterfile').files[0], n=q('postern').value||'Yatra Poster', ph=q('posterph').value||'9991624086', wa=q('posterwa').value||'9306363805';
+if(!f){q('postermsg').innerHTML='⚠️ पहले पोस्टर की फोटो चुनें';return}
+let r=new FileReader();r.onload=()=>{let a=arr('posters');a.push({name:n,data:r.result,ph,wa});set('posters',a);q('postermsg').innerHTML='✅ Poster सेव हो गया';q('postern').value='';q('posterfile').value='';renderPosters()};r.readAsDataURL(f)
+}
+function renderPosters(){
+let a=arr('posters');
+q('posters').innerHTML=a.length?a.map((x,i)=>`<div class=item><b>🖼️ ${x.name}</b><br><img class=preview src="${x.data}"><br><button class="btn green" onclick="location.href='tel:${x.ph||'9991624086'}'">📞 Call Now</button><button class="btn green" onclick="location.href='https://wa.me/91${x.wa||'9306363805'}?text=Namaste%20Tapovan%20Traveller%20ji%2C%20mujhe%20${encodeURIComponent(x.name)}%20ke%20baare%20mein%20jaankari%20chahiye.'">💬 WhatsApp</button><button class="btn red" onclick="delPoster(${i})">Delete</button></div>`).join(''):'अभी कोई Poster नहीं है।'}
+function delPoster(i){let a=arr('posters');a.splice(i,1);set('posters',a);renderPosters()}
+function saveLive(){let n=q('ln').value,u=q('lu').value;if(!n||!u){q('ll').innerHTML='⚠️ मंदिर का नाम और URL भरें';return}let a=arr('live');a.push({n,u});set('live',a);q('ln').value='';q('lu').value='';renderLive()}
+function renderLive(){let a=arr('live');q('ll').innerHTML=a.length?a.map((x,i)=>`<div class=item><b>📹 ${x.n}</b><br><button class="btn green" onclick="window.open('${x.u}','_blank')">Live खोलें</button><button class="btn red" onclick="delLive(${i})">Delete</button></div>`).join(''):'अभी कोई Live Link नहीं है।'}
+function delLive(i){let a=arr('live');a.splice(i,1);set('live',a);renderLive()}
+function saveShop(){
+let x={n:q('sn').value,o:q('so').value,p:q('sp').value,a:q('sa').value,c:q('sc').value,w:q('sw').value};
+if(!x.n||!x.p){q('sm').innerHTML='⚠️ दुकान/सेवा का नाम और मोबाइल भरें';return}
+let a=arr('shops');a.push(x);set('shops',a);q('sm').innerHTML='✅ दुकानदार Listing सेव हो गई';
+['sn','so','sp','sa','sc','sw'].forEach(id=>q(id).value='');renderShops()
+}
+function saveShop2(){
+let x={n:q('sn2').value,o:q('so2').value,p:q('sp2').value,a:q('sa2').value,c:q('sc2').value,w:q('sw2').value};
+if(!x.n||!x.p){q('sm2').innerHTML='⚠️ दुकान/सेवा का नाम और मोबाइल भरें';return}
+let a=arr('shops');a.push(x);set('shops',a);q('sm2').innerHTML='✅ दुकानदार Listing सेव हो गई';
+['sn2','so2','sp2','sa2','sc2','sw2'].forEach(id=>q(id).value='');renderShops()
+}
+function renderShops(){
+let a=arr('shops');
+let out=a.length?a.map((x,i)=>`<div class=item><b>🏪 ${x.n}</b><br>मालिक: ${x.o||'-'}<br>स्थान: ${x.a||'-'}<br>सेवा/सामान: ${x.c||'-'}<br>📞 ${x.p}<br><button class="btn green" onclick="location.href='tel:${x.p}'">📞 Call Now</button><button class="btn green" onclick="location.href='https://wa.me/91${x.w||x.p}'">💬 WhatsApp</button><button class="btn red" onclick="del('shops',${i},'shop')">Delete</button></div>`).join(''):'अभी कोई दुकानदार Listing नहीं है।';
+if(q('sl'))q('sl').innerHTML=out;if(q('sl2'))q('sl2').innerHTML=out
+}
+function openMap(place){window.open('https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(place),'_blank')}
+
+function showHoroscope(){
+const signs=['मेष','वृषभ','मिथुन','कर्क','सिंह','कन्या','तुला','वृश्चिक','धनु','मकर','कुंभ','मीन'];
+const texts=[
+'आज नए काम की शुरुआत के लिए दिन ठीक है। परिवार का सहयोग मिलेगा। खर्च सोच-समझकर करें।',
+'आज धैर्य से काम लेने पर लाभ मिल सकता है। पुराने संपर्क काम आ सकते हैं।',
+'आज बातचीत और यात्रा से जुड़े काम आगे बढ़ सकते हैं। जल्दबाजी से बचें।',
+'आज परिवार और घर से जुड़े कामों पर ध्यान रहेगा। मन शांत रखने की कोशिश करें।',
+'आज आत्मविश्वास बढ़ेगा। किसी महत्वपूर्ण काम में जिम्मेदारी मिल सकती है।',
+'आज काम को व्यवस्थित करने से फायदा होगा। अनावश्यक चिंता से बचें।',
+'आज साझेदारी और बातचीत में संतुलन रखें। रुके काम आगे बढ़ सकते हैं।',
+'आज किसी पुराने काम को पूरा करने का अवसर मिल सकता है। गोपनीय बातों में सावधानी रखें।',
+'आज यात्रा या सीखने से जुड़ा अवसर मिल सकता है। सकारात्मक रहें।',
+'आज मेहनत का परिणाम धीरे-धीरे मिल सकता है। समय का सही उपयोग करें।',
+'आज नई योजना बनाने का दिन है। मित्रों या सहयोगियों से मदद मिल सकती है।',
+'आज रचनात्मक कामों में मन लगेगा। आराम और काम के बीच संतुलन रखें।'
+];
+const r=q('rashi')?.value||'मेष';
+const i=signs.indexOf(r);
+const day=new Date().getDate();
+const text=texts[(i+day)%texts.length];
+const date=new Date().toLocaleDateString('hi-IN',{day:'numeric',month:'long',year:'numeric'});
+q('horoscopeResult').innerHTML=`<div class="item"><h3>🔮 ${r} राशि</h3><p><b>${date}</b></p><p>${text}</p><p>⭐ शुभ रंग: ${['लाल','हरा','पीला','सफेद','केसरिया','नीला'][i%6]} &nbsp; | &nbsp; 🔢 शुभ अंक: ${(i+day)%9+1}</p><p class="muted">यह सामान्य आस्था आधारित दैनिक राशिफल है।</p></div>`;
+}
+
+function callTapovan(){location.href='tel:9991624086'}
+function waTapovan(){location.href='https://wa.me/919306363805?text=Namaste%20Tapovan%20Traveller%20ji'}
+renderBus();renderHotel();renderPackage();renderShops();
+</script>
+<div id="final-check-note" style="max-width:900px;margin:0 auto 20px;padding:10px 14px;text-align:center;color:#666;font-size:13px">✅ Tapovan Traveller • Yatra Sathi — सभी मुख्य पेज एक ही HTML फाइल में</div></body></html>
